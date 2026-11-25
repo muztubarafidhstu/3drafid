@@ -1,0 +1,10 @@
+# Both names go to the same program; it tells the shop and the admin apart by the name.
+{$SITE_HOST}, {$ADMIN_HOST} {
+	encode gzip zstd
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+	}
+	reverse_proxy shop:3000
+}

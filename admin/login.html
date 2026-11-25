@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Sign in</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2312b5cb'/%3E%3Ccircle cx='32' cy='32' r='21' fill='%23e11d86'/%3E%3Ccircle cx='32' cy='32' r='12' fill='%23ffc21a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="admin.css">
+<style>
+  .signin{min-height:100vh;display:grid;place-items:center;padding:20px}
+  .signin .box{width:min(400px,100%);background:#fff;border:2px solid var(--ink);border-radius:18px;box-shadow:0 6px 0 var(--ink);padding:26px 24px}
+  .signin h1{margin:10px 0 4px;font:700 1.5rem var(--display)}
+  .signin .brand{display:flex;align-items:center;gap:10px}
+  .signin .brand svg{animation:spin 18s linear infinite}
+  .signin form{display:grid;gap:12px;margin-top:14px}
+  .signin .msg{margin:0}
+  .signin small{color:var(--muted)}
+</style>
+</head>
+<body>
+<main class="signin">
+  <div class="box">
+    <div class="brand"><svg viewBox="0 0 48 48" width="34" height="34" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#12b5cb"/><circle cx="24" cy="24" r="15" fill="#e11d86"/><circle cx="24" cy="24" r="9" fill="#ffc21a"/><circle cx="24" cy="24" r="4" fill="#fff"/></svg></div>
+    <h1>Shop admin</h1>
+    <p class="sub" id="lead">Sign in to manage your shop.</p>
+    <form id="f" autocomplete="on">
+      <label class="f">Password<input id="pw" type="password" name="password" autocomplete="current-password" required autofocus></label>
+      <button class="btn primary" type="submit" id="go">Sign in</button>
+      <div id="res" role="status"></div>
+    </form>
+    <p><small>Only the shop owner needs this page. Customers use the shop address.</small></p>
+  </div>
+</main>
+<script src="login.js"></script>
+</body>
+</html>

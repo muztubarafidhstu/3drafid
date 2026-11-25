@@ -1,0 +1,14 @@
+# Your shop's own data: products, buying costs, orders, photos. Never put these on GitHub.
+data/
+*.xlsx.bak
+backups/
+# Built website (large, rebuilt by the admin)
+dist/
+node_modules/
+*.zip
+.env
+.env.*
+.wrangler/
+.DS_Store
+Thumbs.db
+!.env.example

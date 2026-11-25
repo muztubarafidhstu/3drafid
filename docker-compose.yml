@@ -1,0 +1,33 @@
+# Runs the shop and a web server (Caddy) that gets free HTTPS certificates by itself.
+# 1. Copy .env.example to .env and fill it in.   2. docker compose up -d
+services:
+  shop:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      ADMIN_HOST: ${ADMIN_HOST}
+      SITE_HOST: ${SITE_HOST}
+    volumes:
+      - ./data:/data          # your products, orders, photos, password: back this folder up
+    expose:
+      - "3000"                # not opened to the internet directly; Caddy sits in front
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on: [shop]
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      ADMIN_HOST: ${ADMIN_HOST}
+      SITE_HOST: ${SITE_HOST}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:
